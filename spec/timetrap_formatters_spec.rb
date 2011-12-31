@@ -1,6 +1,7 @@
 TEST_MODE = true # This tells timetrap not to use the real database.
 require 'rubygems'
-require 'timetrap'
+require 'bundler'
+Bundler.require
 require 'rspec'
 
 describe Timetrap::Formatters do
