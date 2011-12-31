@@ -1,4 +1,4 @@
-TEST_MODE = true
+TEST_MODE = true # This tells timetrap not to use the real database.
 require 'rubygems'
 require 'timetrap'
 require 'rspec'
@@ -25,6 +25,10 @@ describe Timetrap::Formatters do
     $stdout = StringIO.new
     $stdin = StringIO.new
     $stderr = StringIO.new
+  end
+
+  after :each do
+    STDERR.puts $stderr.string unless $stderr.string == ''
   end
 
   describe "factor" do
