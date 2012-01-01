@@ -48,7 +48,7 @@ See https://github.com/samg/timetrap/issues#issue/13 for more details.
 
 ## Contributing
 
-To contribute your custom formatter fork this repo and send a pull request.
+To contribute a custom formatter, fork this repo and send a pull request.
 
 Update the README with some info about your formatter and some sample output.
 
