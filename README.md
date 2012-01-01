@@ -26,6 +26,22 @@ See https://github.com/samg/timetrap/blob/master/README.md for more details.
 
 ## Formatters:
 
+### Day Progress Formatter
+
+The *day* formatter sums up the time you've logged today and
+tells you how near your working day to completion is.
+
+    $ t d -f day
+
+    [################################### ] 70%
+    1:03:04
+
+Requires two properties to be added to `~/.timetrap.yml` (see `t configure`)
+
+    day_length_hours => how long you want your working day to be
+    progress_width => the width of the progress bar
+
+
 ### Datesheet
 
 The *datesheet* formatter makes it easy to grep for an entry and get the
