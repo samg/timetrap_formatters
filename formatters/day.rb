@@ -14,7 +14,7 @@ class Timetrap::Formatters::Day
     todays_duration = 0.0
     todays_entries = []
     @entries.each do |entry|
-      if is_today(entry[:start], entry[:end])
+      if is_today(entry[:start], entry.end_or_now)
         todays_duration += entry.duration
         todays_entries << entry
       end
