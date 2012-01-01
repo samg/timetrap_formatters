@@ -26,6 +26,18 @@ See https://github.com/samg/timetrap/blob/master/README.md for more details.
 
 ## Formatters:
 
+### Datesheet
+
+The *datesheet* formatter makes it easy to grep for an entry and get the
+reference to date and sheet in the output lines.
+
+    $ t d -f datesheet
+    2011-12-01 17:28:25 - 17:34:37 0:06:12 [Sheet] Entry description
+
+Some nice aliases for the datesheet formatter:
+
+    alias tmf="clear && t d all -s 'today' -f datesheet"
+    alias tmg="clear && t d all -s 'today' -f datesheet | sort -n -k 2.1 -k 2.2"
 
 ### Factor
 
