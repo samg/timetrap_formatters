@@ -60,12 +60,13 @@ See https://github.com/samg/timetrap/issues#issue/13 for more details.
 
 ## Contributing
 
-To contribute a custom formatter, fork this repo and send a pull request.
+To contribute a formatter:
 
-Update the README with some info about your formatter and some sample output.
-
-If you'd like to TDD your formatter `spec/timetrap_formatter_spec.rb` is available.
-This helps ensure future changes to timetrap won't break your formatter.
+1. Fork this repo and create your formatter.
+2. Choose a short descriptive name for your formatter.
+3. Update the README with some info about your formatter and some sample output.
+4. If you'd like to TDD your formatter `spec/timetrap_formatter_spec.rb` is available.
+   This helps ensure future changes to timetrap won't break your formatter.
 
 Bugs and Feature Requests
 --------
