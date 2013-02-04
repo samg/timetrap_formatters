@@ -41,6 +41,11 @@ Requires two properties to be added to `~/.timetrap.yml` (see `t configure`)
     day_length_hours => how long you want your working day to be
     progress_width => the width of the progress bar
 
+A list of sheets to be ignored by the calculation can be specified by an optional
+parameter
+
+    day_exclude_sheets => a list of sheet names to exclude from calculations
+
 
 ### Datesheet
 
