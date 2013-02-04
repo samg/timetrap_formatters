@@ -44,7 +44,7 @@ Requires two properties to be added to `~/.timetrap.yml` (see `t configure`)
 A list of sheets to be ignored by the calculation can be specified by an optional
 parameter
 
-    day_ignore_sheets => a list of sheet names to exclude from calculations
+    day_exclude_sheets => a list of sheet names to exclude from calculations
 
 
 ### Datesheet
