@@ -7,7 +7,7 @@ class Timetrap::Formatters::Day
     @entries = entries
     @total_day_target = hours_to_seconds(Timetrap::Config['day_length_hours'].to_f)
     @width = Timetrap::Config['progress_width'].to_f
-    @skip = Timetrap::Config['day_ignore_sheets'] || []
+    @skip = Timetrap::Config['day_exclude_sheets'] || []
   end
 
   def output
