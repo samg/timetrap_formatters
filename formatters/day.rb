@@ -7,6 +7,7 @@ class Timetrap::Formatters::Day
     @entries = entries
     @total_day_target = hours_to_seconds(Timetrap::Config['day_length_hours'].to_f)
     @width = Timetrap::Config['progress_width'].to_f
+    @skip = Timetrap::Config['day_ignore_sheets'] || []
   end
 
   def output
@@ -14,7 +15,7 @@ class Timetrap::Formatters::Day
     todays_duration = 0.0
     todays_entries = []
     @entries.each do |entry|
-      if is_today(entry[:start], entry.end_or_now)
+      if is_today(entry[:start], entry.end_or_now) && !@skip.include?(entry.sheet)
         todays_duration += entry.duration
         todays_entries << entry
       end
