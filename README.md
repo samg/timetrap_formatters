@@ -79,6 +79,30 @@ See https://github.com/samg/timetrap/issues#issue/13 for more details.
         ---------------------------------------------------------
         Total                                    6:00:00
 
+### LaTeX Invoice
+The *invoice* formatter generates LaTeX output that will create a nice looking
+invoice.  In order to generate the resulting LaTeX output, you must have
+[invoice.cls](https://github.com/treyhunner/invoices) installed.
+
+You can generate the LaTeX file and produce a PDF with
+
+    $ t d -f invoice > invoice.tex; latexmk -pdf invoice.tex
+
+The following properties can be added to `~/.timetrap.yml`
+
+    company => The company name to be printed at the top of the invoice
+    address1 => Typically the street address
+    address2 => Typically the city, state, and zipcode
+    phone
+    email
+    rate => The hourly rate at which to bill
+
+The produced output will have placeholders `INSERT CONTACT` and `INSERT
+COMPANY` which will need to be replaced with the name and company being billed.
+
+If the invoice is generated for multiple sheets, header and subtotal lines will
+be added for each sheet.
+
 ## Contributing
 
 To contribute a formatter:
