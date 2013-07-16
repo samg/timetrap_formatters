@@ -17,6 +17,7 @@ describe Timetrap::Formatters do
     Timetrap::CLI.parse command
     Timetrap::CLI.invoke
   end
+
   before :each do
     Timetrap::Config.stub(:[]).with('formatter_search_paths').and_return(
       [File.expand_path(File.join(File.dirname(__FILE__), '..', 'formatters'))]
@@ -61,6 +62,45 @@ Timesheet: SpecSheet
       Timetrap::Timer.current_sheet = 'SpecSheet'
       invoke 'display --format factor'
       $stdout.string.should == @desired_output
+    end
+  end
+
+  describe "by date" do
+    before do
+      Timetrap::Entry.create( :sheet => 'SpecSheet',
+        :note => 'entry one', :start => '2008-10-03 16:00:00', :end => '2008-10-03 18:00:00'
+      )
+      Timetrap::Entry.create( :sheet => 'SpecSheet',
+        :note => 'entry two', :start => '2008-10-04 16:00:00', :end => '2008-10-04 18:00:00'
+      )
+      Timetrap::Entry.create( :sheet => 'SpecSheet',
+        :note => 'entry theww', :start => '2008-10-04 19:00:00'
+      )
+      Time.stub!(:now).and_return local_time('2008-10-04 20:00:00')
+    end
+
+    it "should correctly output by day format" do
+      Timetrap::Timer.current_sheet = 'SpecSheet'
+      invoke 'display --format by_day'
+      $stdout.string.should == <<-OUTPUT
+## Fri Oct 03, 2008 ##
+
+        Sheet   Start      End        Duration   Notes
+    SpecSheet   16:00:00 - 18:00:00   2:00:00    entry one
+    ────────────────────────────────────────────────────────────
+    Total                                    2:00:00
+
+## Sat Oct 04, 2008 ##
+
+        Sheet   Start      End        Duration   Notes
+    SpecSheet   16:00:00 - 18:00:00   2:00:00    entry two
+                19:00:00 -            1:00:00    entry theww
+    ────────────────────────────────────────────────────────────
+    Total                                    3:00:00
+
+────────────────────────────────────────────────────────────────
+Grand Total                                  5:00:00
+OUTPUT
     end
   end
 end
