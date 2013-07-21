@@ -103,7 +103,7 @@ COMPANY` which will need to be replaced with the name and company being billed.
 If the invoice is generated for multiple sheets, header and subtotal lines will
 be added for each sheet.
 
-## by_day formatter
+### by_day formatter
 
 If you want to output your data grouped by date and not by sheet, you can use
 this formatter.
