@@ -117,6 +117,17 @@ this formatter.
         ───────────────────────────────────────────────────────────────────────────────────────────────
         Total                                    7:25:15
 
+
+### pay formatter
+
+Will display per-session, per-day, per-sheet and global earnings. Put your
+hourly pay rate in the config as `pay_rate`, and run `t d -f pay`.
+
+Also supports prefixes and suffixes, so to have your pay printed in dollars, set
+`pay_rate` to `$3.14`, or whatever your pay rate is. You could also add a prefix
+which will be printed after each pay amount as such: `$3.14M` if you make, say,
+3.14 million USD per hour.
+
 ## Contributing
 
 To contribute a formatter:
