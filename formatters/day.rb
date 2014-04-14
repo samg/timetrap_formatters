@@ -8,6 +8,7 @@ class Timetrap::Formatters::Day
     @total_day_target = hours_to_seconds(Timetrap::Config['day_length_hours'].to_f)
     @width = Timetrap::Config['progress_width'].to_f
     @skip = Timetrap::Config['day_exclude_sheets'] || []
+    @countdown = Timetrap::Config['day_countdown']
   end
 
   def output
@@ -22,7 +23,8 @@ class Timetrap::Formatters::Day
     end
     percentage = ((todays_duration/@total_day_target)*100).to_i
     output << '[' << progress_bar(percentage) << '] ' << percentage.to_s << "%\n"
-    output << format_total(todays_entries)
+    remaining = @countdown ? format_seconds((@total_day_target - todays_duration).to_int) : ''
+    output << "%%s%%%ds" % (@width - 7) % [format_total(todays_entries), remaining]
     return output
   end
 
