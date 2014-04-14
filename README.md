@@ -46,6 +46,11 @@ parameter
 
     day_exclude_sheets => a list of sheet names to exclude from calculations
 
+A countdown of the remaining time in your working day can be displayed when an
+optional parameter is set
+
+    day_countdown => true to show the countdown
+
 
 ### Datesheet
 
