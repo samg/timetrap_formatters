@@ -84,6 +84,25 @@ See https://github.com/samg/timetrap/issues#issue/13 for more details.
         ---------------------------------------------------------
         Total                                    6:00:00
 
+### Fraction
+
+The *fraction* formatter is also like the default *text* formatter. In addition
+to the information that is normally shown, it show the duration of the entry as
+a fraction of an hour. This is useful for entry into some time accounting
+systems.
+
+    $ t d -ffraction
+    Timesheet: mysheet
+        Day                Start   End     Duration        Notes
+        Wed Apr 23, 2014   10:12 - 10:15   0:02:23   0.04  entry
+                           14:29 - 14:57   0:28:05   0.47
+                           14:57 - 15:14   0:17:05   0.28  note
+                           15:14 - 15:51   0:36:57   0.62
+                           15:51 - 15:53   0:01:58   0.03
+                                           1:26:28   1.44
+        ---------------------------------------------------------
+        Total                              5:12:47   5.21
+
 ### LaTeX Invoice
 The *invoice* formatter generates LaTeX output that will create a nice looking
 invoice.  In order to generate the resulting LaTeX output, you must have
