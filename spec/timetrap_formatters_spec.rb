@@ -22,6 +22,7 @@ describe Timetrap::Formatters do
     Timetrap::Config.stub(:[]).with('formatter_search_paths').and_return(
       [File.expand_path(File.join(File.dirname(__FILE__), '..', 'formatters'))]
     )
+    Timetrap::Config.stub(:[]).with('auto_sheet').and_return(nil)
     Timetrap::Entry.create_table!
     Timetrap::Meta.create_table!
     $stdout = StringIO.new
@@ -44,7 +45,7 @@ describe Timetrap::Formatters do
       Timetrap::Entry.create( :sheet => 'SpecSheet',
         :note => 'entry', :start => '2008-10-04 19:00:00'
       )
-      Time.stub!(:now).and_return local_time('2008-10-04 20:00:00')
+      Time.stub(:now).and_return local_time('2008-10-04 20:00:00')
       @desired_output = <<-OUTPUT
 Timesheet: SpecSheet
     Day                Start      End        Duration   Notes
@@ -76,7 +77,7 @@ Timesheet: SpecSheet
       Timetrap::Entry.create( :sheet => 'SpecSheet',
         :note => 'entry theww', :start => '2008-10-04 19:00:00'
       )
-      Time.stub!(:now).and_return local_time('2008-10-04 20:00:00')
+      Time.stub(:now).and_return local_time('2008-10-04 20:00:00')
     end
 
     it "should correctly output by day format" do
