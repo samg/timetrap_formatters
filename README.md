@@ -152,6 +152,48 @@ Also supports prefixes and suffixes, so to have your pay printed in dollars, set
 which will be printed after each pay amount as such: `$3.14M` if you make, say,
 3.14 million USD per hour.
 
+### Harvest formatter
+
+The Harvest formatter, developed separately as the [timetrap-harvest][timetrap-harvest] gem, will
+submit your timetrap entries to timesheets on Harvest.
+
+After adding Harvest credentials and project/task alias definitions to your
+timetrap config file, you can tag entries for harvesting:
+
+```bash
+$ timetrap in working on timetrap-harvest @code
+$ timetrap out
+```
+
+When you're ready to submit, you can use `timetrap` to limit the range of your
+entries.
+
+For example, you can submit your entries at the end of the day:
+
+```bash
+$ timetrap today --format harvest
+```
+
+Or for the past week:
+
+```bash
+$ timetrap display --start 'last monday' --end 'last friday' --format harvest
+```
+
+The output will list entries that `timetrap-harvest` successfully submitted as
+well as entries that `timetrap-harvest` failed to submit.
+
+```bash
+Submitted: 1
+Failed: 0
+
+Submitted entries
+--------------------------------------------------------------------------------
+Submitted: working on timetrap-harvest @code
+```
+
+See timetrap-harvests's [README](timetrap-harvest) for more details.
+
 ## Contributing
 
 To contribute a formatter:
@@ -165,3 +207,5 @@ To contribute a formatter:
 Bugs and Feature Requests
 --------
 Submit to http://github.com/samg/timetrap/issues
+
+[timetrap-harvest]: https://github.com/dblandin/timetrap-harvest
