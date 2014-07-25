@@ -192,7 +192,7 @@ Submitted entries
 Submitted: working on timetrap-harvest @code
 ```
 
-See timetrap-harvests's [README](timetrap-harvest) for more details.
+See timetrap-harvest's [README](timetrap-harvest) for more details.
 
 ## Contributing
 
