@@ -11,14 +11,21 @@ module Timetrap
           h[e.sheet] << e
           h
         end
-        
+
         sheets.keys.sort.each do |sheet|
           self.output <<  "Timesheet: #{sheet}\n"
-          sheets[sheet].each_with_index do |e, i|
-            #from_current_day << e
+          self.output << "   Duration   Notes\n"
+
+          durations = {}
+          sheets[sheet].each do |e|
+            durations[e.note] ||= 0
+            durations[e.note]  += e.duration
+          end
+
+          durations.keys.sort.each do |d|
             self.output <<  "%10s    %s\n" % [
-              format_duration(e.duration),
-              e.note
+              format_duration(durations[d]),
+              d
             ]
           end
         end
