@@ -1,3 +1,19 @@
+# text formatter for sum of spent time grouped by note.
+#
+# $ t d other -f sum_notes
+#
+# Timesheet: other
+#   Duration   Notes
+#   0:46:03    bank
+#   0:27:37    blogs
+#   0:52:36    coffee
+#   0:48:24    lunch
+#   0:18:02    tea
+#
+# Alexander Sapozhnikov
+# http://shoorick.ru
+# shoorick@cpan.org
+
 module Timetrap
   module Formatters
     class SumNotes
