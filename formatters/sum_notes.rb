@@ -13,7 +13,7 @@ module Timetrap
         end
 
         sheets.keys.sort.each do |sheet|
-          self.output <<  "Timesheet: #{sheet}\n"
+          self.output <<  "\nTimesheet: #{sheet}\n"
           self.output << "   Duration   Notes\n"
 
           durations = {}
