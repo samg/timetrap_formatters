@@ -152,6 +152,16 @@ Also supports prefixes and suffixes, so to have your pay printed in dollars, set
 which will be printed after each pay amount as such: `$3.14M` if you make, say,
 3.14 million USD per hour.
 
+### total formatter
+
+This formatter simply displays the total amount of hours logged on this
+timesheet as a decimal number.
+
+```
+$ t d -ftotal
+4.709
+```
+
 ### Harvest formatter
 
 The Harvest formatter, developed separately as the [timetrap-harvest][timetrap-harvest] gem, will
