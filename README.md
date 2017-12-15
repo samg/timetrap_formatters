@@ -103,6 +103,11 @@ systems.
         ---------------------------------------------------------
         Total                              5:12:47   5.21
 
+Note that the fraction is computed independently for each item. In particular, the
+fraction next to the total corresponds to the total. Due to rounding, that number
+won't necessarily match the sum of the partial fractions. That is normally what you
+want, but be aware of it if you include the partials in a report or invoice.
+
 ### LaTeX Invoice
 The *invoice* formatter generates LaTeX output that will create a nice looking
 invoice.  In order to generate the resulting LaTeX output, you must have
