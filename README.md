@@ -209,6 +209,61 @@ Submitted: working on timetrap-harvest @code
 
 See timetrap-harvest's [README](timetrap-harvest) for more details.
 
+### sum_notes
+
+Sum the time depending on the notes:
+
+```bash
+t d -f sum_notes
+```
+
+```bash
+Timesheet: RR
+    Day                Start      End        Duration   Notes
+    Tue Feb 27, 2024   10:00:00 - 14:00:00   4:00:00    Project 1
+                                             4:00:00
+    Wed Feb 28, 2024   09:30:00 - 10:00:00   0:30:00    Project 1
+                       10:21:18 - 10:38:26   0:17:08    Project 3
+                       11:17:15 - 11:48:33   0:31:18    Project 1
+                       11:52:12 - 13:14:59   1:22:47    Project 3
+                       14:02:20 - 14:47:53   0:45:33    Project 3
+                                             3:26:46
+    Fri Mar 01, 2024   11:49:16 - 11:58:08   0:08:52    Project 1
+                       11:58:15 - 13:06:25   1:08:10    Project 3
+                       14:00:37 - 15:32:37   1:32:00    Project 1
+                                             2:49:02
+    Sun Mar 03, 2024   18:58:42 - 19:58:30   0:59:48    Project 1
+                                             0:59:48
+    Mon Mar 04, 2024   11:04:36 - 11:57:42   0:53:06    Project 1
+                                             0:53:06
+    Tue Mar 05, 2024   12:06:44 - 12:41:25   0:34:41    Project 1
+                                             0:34:41
+    Thu Mar 07, 2024   11:20:20 - 11:31:11   0:10:51    Project 2
+                                             0:10:51
+    Mon Mar 11, 2024   07:33:29 - 08:56:53   1:23:24    Project 1
+                       13:08:28 - 14:29:29   1:21:01    Project 1
+                                             2:44:25
+    Tue Mar 12, 2024   16:45:21 - 18:21:35   1:36:14    Project 1
+                       19:01:32 - 20:27:11   1:25:39    Project 1
+                                             3:01:53
+    Wed Mar 13, 2024   10:08:41 - 11:15:59   1:07:18    Project 1
+                       11:16:13 - 11:30:32   0:14:19    Project 1
+                       12:02:46 - 12:20:40   0:17:54    Project 1
+                       12:27:13 - 12:59:41   0:32:28    Project 1
+                                             2:11:59
+    ------------------------------------------------------------------------------------
+    Total                                   21:07:20
+```
+
+
+```bash
+Timesheet: RR
+   Duration   Notes
+   3:33:38    Project 3
+   0:10:51    Project 2
+  17:08:02    Project 1 
+```
+
 ## Contributing
 
 To contribute a formatter:
