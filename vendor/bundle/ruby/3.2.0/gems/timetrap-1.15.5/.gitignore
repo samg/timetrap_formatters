@@ -1,6 +1,0 @@
-tags
-pkg
-*.swp
-Gemfile.lock
-.bundle
-vendor/bundle
