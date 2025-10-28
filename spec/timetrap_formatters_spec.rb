@@ -139,10 +139,10 @@ OUTPUT
       output.should include('4:00:00')
     end
 
-    it "should correctly display entries for today" do
-      # Create today's entries using a fixed date
+    it "should correctly display entries for a different date" do
+      # Create entries for a specific date (not necessarily today)
       Timetrap::Entry.create( :sheet => 'work',
-        :note => 'today entry', :start => '2013-07-30 09:00:00', :end => '2013-07-30 11:00:00'
+        :note => 'entry for specific date', :start => '2013-07-30 09:00:00', :end => '2013-07-30 11:00:00'
       )
       
       Timetrap::Timer.current_sheet = 'work'
