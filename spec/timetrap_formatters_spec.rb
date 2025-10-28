@@ -140,15 +140,13 @@ OUTPUT
     end
 
     it "should correctly display entries for today" do
-      # Create today's entries
-      today_start = Time.now.strftime('%Y-%m-%d') + ' 09:00:00'
-      today_end = Time.now.strftime('%Y-%m-%d') + ' 11:00:00'
+      # Create today's entries using a fixed date
       Timetrap::Entry.create( :sheet => 'work',
-        :note => 'today entry', :start => today_start, :end => today_end
+        :note => 'today entry', :start => '2013-07-30 09:00:00', :end => '2013-07-30 11:00:00'
       )
       
       Timetrap::Timer.current_sheet = 'work'
-      invoke "display --start \"#{Time.now.strftime('%Y-%m-%d')}\" --format day"
+      invoke "display --start \"2013-07-30\" --format day"
       # Should show 2 hours of 8 hours = 25%
       output = $stdout.string
       output.should include('25%')
