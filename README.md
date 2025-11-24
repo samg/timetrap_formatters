@@ -162,7 +162,7 @@ which will be printed after each pay amount as such: `$3.14M` if you make, say,
 This formatter simply displays the total amount of hours logged on this
 timesheet as a decimal number.
 
-```
+```sh
 $ t d -ftotal
 4.709
 ```
@@ -208,6 +208,58 @@ Submitted: working on timetrap-harvest @code
 ```
 
 See timetrap-harvest's [README](timetrap-harvest) for more details.
+
+### sum_notes formatter
+
+Text formatter for sum of spent time grouped by note. 
+
+```sh 
+t d other -f sum_notes
+# Timesheet: other
+#   Duration   Notes
+#   0:46:03    bank
+#   0:27:37    blogs
+#   0:52:36    coffee
+#   0:48:24    lunch
+#   0:18:02    tea
+```
+
+
+### sum_weeks formatter
+
+Text formatter for sum of spent time grouped by week with progress bar.
+Can adapt with progess bar, change the formatter fields as you which.
+The progress bar can go above 100% you see the delimitation with the characters difference : ████▉▉▉▉
+
+```sh
+t d other -f sum_weeks
+# Week       Hours     %        Progress
+# 2024-53     62.01     215%   █████████████████████████▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉
+# 2025-01      5.65      20%   ████---------------------
+# 2025-02     35.57     124%   █████████████████████████▉▉▉▉▉▉
+# 2025-03     34.83     121%   █████████████████████████▉▉▉▉▉
+# 2025-04     22.83      79%   ███████████████████------
+# 2025-05     21.62      75%   ██████████████████-------
+```
+
+### sum_years formatter
+
+Text formatter for sum of days per year with specific tag (@tag)
+Days for tags are counted using starttime and endtime. This is not counting the number of lines !!!
+For this example I have 2 tags @event and @ka
+
+```sh
+t d -f sum_years
+# Explanation:
+#   - Days for @event and @ka are counted using starttime and endtime.
+#   Year      Hours   %H     Progress Hours                       DaysEv   %D    Progress Days                   DaysKA   %K     Progress KA
+#    2024      62.01    4%    4% ---------------                  0    0%    0% ---------------                  0    0%    0% ---------------
+#    2025    1647.82  110%  110% ███████████████▉▉               64  116%  116% ███████████████▉▉               39  156%  156% ███████████████▉▉▉▉▉▉▉▉
+```
+
+
+### oneline formatter
+
 
 ## Contributing
 
