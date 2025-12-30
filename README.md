@@ -14,13 +14,17 @@ Custom formatters can be installed by saving the formatter source files in
 
 One easy way to install all of these formatters is with this command:
 
-    git clone git://github.com/samg/timetrap_formatters ~/.timetrap
+```sh
+git clone git://github.com/samg/timetrap_formatters ~/.timetrap
+```
 
 You can also:
 
-    git clone git://github.com/samg/timetrap_formatters /some/path
-    mkdir -p ~/.timetrap/
-    ln -s /some/path ~/.timetrap/formatters
+```sh
+git clone git://github.com/samg/timetrap_formatters /some/path
+mkdir -p ~/.timetrap/
+ln -s /some/path ~/.timetrap/formatters
+```
 
 See https://github.com/samg/timetrap/blob/master/README.md for more details.
 
@@ -31,10 +35,12 @@ See https://github.com/samg/timetrap/blob/master/README.md for more details.
 The *day* formatter sums up the time you've logged today and
 tells you how near your working day to completion is.
 
-    $ t d -f day
+```sh
+$ t d -f day
 
-    [################################### ] 70%
-    1:03:04
+[################################### ] 70%
+1:03:04
+```
 
 Requires two properties to be added to `~/.timetrap.yml` (see `t configure`)
 
@@ -57,13 +63,17 @@ optional parameter is set
 The *datesheet* formatter makes it easy to grep for an entry and get the
 reference to date and sheet in the output lines.
 
-    $ t d -f datesheet
-    2011-12-01 17:28:25 - 17:34:37 0:06:12 [Sheet] Entry description
+```sh
+$ t d -f datesheet
+2011-12-01 17:28:25 - 17:34:37 0:06:12 [Sheet] Entry description
+```
 
 Some nice aliases for the datesheet formatter:
 
-    alias tmf="clear && t d all -s 'today' -f datesheet"
-    alias tmg="clear && t d all -s 'today' -f datesheet | sort -n -k 2.1 -k 2.2"
+```sh
+alias tmf="clear && t d all -s 'today' -f datesheet"
+alias tmg="clear && t d all -s 'today' -f datesheet | sort -n -k 2.1 -k 2.2"
+```
 
 ### Factor
 
@@ -72,17 +82,19 @@ notes in your entry descriptions, and multiplies the entry's duration by them.
 A note like *f:2* will multiply the entry's duration by two in the output.
 See https://github.com/samg/timetrap/issues#issue/13 for more details.
 
-    $ # note durations are multiplications of start and end times, based on notes
-    $ t d -ffactor
-    Timesheet: SpecSheet
-        Day                Start      End        Duration   Notes
-        Fri Oct 03, 2008   16:00:00 - 18:00:00   4:00:00    entry f:2
-                                                 4:00:00
-        Sat Oct 04, 2008   16:00:00 - 18:00:00   1:00:00    entry f:0.5
-                           19:00:00 -            1:00:00    entry
-                                                 2:00:00
-        ---------------------------------------------------------
-        Total                                    6:00:00
+```sh
+$ # note durations are multiplications of start and end times, based on notes
+$ t d -ffactor
+Timesheet: SpecSheet
+    Day                Start      End        Duration   Notes
+    Fri Oct 03, 2008   16:00:00 - 18:00:00   4:00:00    entry f:2
+                                                4:00:00
+    Sat Oct 04, 2008   16:00:00 - 18:00:00   1:00:00    entry f:0.5
+                        19:00:00 -            1:00:00    entry
+                                                2:00:00
+    ---------------------------------------------------------
+    Total                                    6:00:00
+```
 
 ### Fraction
 
@@ -91,17 +103,19 @@ to the information that is normally shown, it show the duration of the entry as
 a fraction of an hour. This is useful for entry into some time accounting
 systems.
 
-    $ t d -ffraction
-    Timesheet: mysheet
-        Day                Start   End     Duration        Notes
-        Wed Apr 23, 2014   10:12 - 10:15   0:02:23   0.04  entry
-                           14:29 - 14:57   0:28:05   0.47
-                           14:57 - 15:14   0:17:05   0.28  note
-                           15:14 - 15:51   0:36:57   0.62
-                           15:51 - 15:53   0:01:58   0.03
-                                           1:26:28   1.44
-        ---------------------------------------------------------
-        Total                              5:12:47   5.21
+```sh
+$ t d -ffraction
+Timesheet: mysheet
+    Day                Start   End     Duration        Notes
+    Wed Apr 23, 2014   10:12 - 10:15   0:02:23   0.04  entry
+                        14:29 - 14:57   0:28:05   0.47
+                        14:57 - 15:14   0:17:05   0.28  note
+                        15:14 - 15:51   0:36:57   0.62
+                        15:51 - 15:53   0:01:58   0.03
+                                        1:26:28   1.44
+    ---------------------------------------------------------
+    Total                              5:12:47   5.21
+```
 
 Note that the fraction is computed independently for each item. In particular, the
 fraction next to the total corresponds to the total. Due to rounding, that number
@@ -115,7 +129,9 @@ invoice.  In order to generate the resulting LaTeX output, you must have
 
 You can generate the LaTeX file and produce a PDF with
 
-    $ t d -f invoice > invoice.tex; latexmk -pdf invoice.tex
+```sh
+$ t d -f invoice > invoice.tex; latexmk -pdf invoice.tex
+```
 
 The following properties can be added to `~/.timetrap.yml`
 
@@ -137,15 +153,16 @@ be added for each sheet.
 If you want to output your data grouped by date and not by sheet, you can use
 this formatter.
 
-    ## Fri Jul 19, 2013 ##
+```sh
+## Fri Jul 19, 2013 ##
 
-                   Sheet   Start      End        Duration   Notes
-        housekeeping       08:43:00 - 12:30:00   3:47:00    cleaning everything
-        comic time         14:01:27 - 15:38:41   1:37:14    saga, part II
-        cooking            15:38:59 - 17:40:00   2:01:01    yummy lasagne
-        ───────────────────────────────────────────────────────────────────────────────────────────────
-        Total                                    7:25:15
-
+            Sheet   Start      End        Duration   Notes
+    housekeeping       08:43:00 - 12:30:00   3:47:00    cleaning everything
+    comic time         14:01:27 - 15:38:41   1:37:14    saga, part II
+    cooking            15:38:59 - 17:40:00   2:01:01    yummy lasagne
+    ───────────────────────────────────────────────────────────────────────────────────────────────
+    Total                                    7:25:15
+```
 
 ### pay formatter
 
@@ -162,7 +179,7 @@ which will be printed after each pay amount as such: `$3.14M` if you make, say,
 This formatter simply displays the total amount of hours logged on this
 timesheet as a decimal number.
 
-```
+```sh
 $ t d -ftotal
 4.709
 ```
@@ -208,6 +225,85 @@ Submitted: working on timetrap-harvest @code
 ```
 
 See timetrap-harvest's [README](timetrap-harvest) for more details.
+
+### sum_notes formatter
+
+Text formatter for sum of spent time grouped by note. 
+
+```sh 
+t d other -f sum_notes
+# Timesheet: other
+#   Duration   Notes
+#   0:46:03    bank
+#   0:27:37    blogs
+#   0:52:36    coffee
+#   0:48:24    lunch
+#   0:18:02    tea
+```
+
+
+### sum_weeks formatter
+
+Text formatter for sum of spent time grouped by week with progress bar.
+Can adapt with progess bar, change the formatter fields as you which.
+The progress bar can go above 100% you see the delimitation with the characters difference : ████▉▉▉▉
+
+```sh
+t d other -f sum_weeks
+# Week       Hours     %        Progress
+# 2024-53     62.01     215%   █████████████████████████▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉
+# 2025-01      5.65      20%   ████---------------------
+# 2025-02     35.57     124%   █████████████████████████▉▉▉▉▉▉
+# 2025-03     34.83     121%   █████████████████████████▉▉▉▉▉
+# 2025-04     22.83      79%   ███████████████████------
+# 2025-05     21.62      75%   ██████████████████-------
+```
+
+### sum_years formatter
+
+Text formatter for sum of days per year with specific tag (@tag)
+Days for tags are counted using starttime and endtime. This is not counting the number of lines !!!
+For this example I have 2 tags @event and @ka
+
+```sh
+t d -f sum_years
+# Explanation:
+#   - Days for @event and @ka are counted using starttime and endtime.
+#   Year      Hours   %H     Progress Hours                       DaysEv   %D    Progress Days                   DaysKA   %K     Progress KA
+#    2024      62.01    4%    4% ---------------                  0    0%    0% ---------------                  0    0%    0% ---------------
+#    2025    1647.82  110%  110% ███████████████▉▉               64  116%  116% ███████████████▉▉               39  156%  156% ███████████████▉▉▉▉▉▉▉▉
+```
+
+
+### oneline formatter
+
+
+# Similar to "t d" but print all in 1 line to allow grep
+# Dorian Gravier
+# https://dgrv.github.io/dorian-gravier/
+
+```sh
+$ t d | grep @event
+Sat Jul 05, 2025   06:30:00 - 19:00:00  12:30:00    Example1 @event @ka
+Sun Jul 06, 2025   06:30:00 - 21:00:00  14:30:00    Example1 @event @ka
+                                                    @event @ka
+                                                    @event @ka
+                                                    @event @ka
+Sat Aug 09, 2025   10:00:00 - 21:00:00  11:00:00    Example2 @event
+                    07:12:44 - 21:00:00  13:47:16    Example2 @event
+
+to
+
+$ t d -f oneline| grep @event
+508      2025-07-04 20:08:28 - 2025-07-04 23:08:28      3:00:00    Example1 @event @ka
+729      2025-07-05 06:30:00 - 2025-07-05 19:00:00     12:30:00    Example1 @event @ka
+730      2025-07-06 06:30:00 - 2025-07-06 21:00:00     14:30:00    Example1 @event @ka
+555      2025-08-01 18:00:00 - 2025-08-01 23:00:00      5:00:00    Example3 @event @ka
+556      2025-08-02 06:00:00 - 2025-08-02 18:30:00     12:30:00    Example3 @event @ka
+557      2025-08-03 06:00:00 - 2025-08-03 21:30:00     15:30:00    Example3 @event @ka
+574      2025-08-09 10:00:00 - 2025-08-09 21:00:00     11:00:00    Example2 @event
+576      2025-08-10 07:12:44 - 2025-08-10 21:00:00     13:47:16    Example2 @event
+```
 
 ## Contributing
 
