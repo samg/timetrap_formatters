@@ -15,8 +15,12 @@ class Timetrap::Formatters::Day
     output = ''
     todays_duration = 0.0
     todays_entries = []
+    
+    # Determine the target date from entries or use today
+    target_date = determine_target_date
+    
     @entries.each do |entry|
-      if is_today(entry[:start], entry.end_or_now) && !@skip.include?(entry.sheet)
+      if is_target_date(entry[:start], entry.end_or_now, target_date) && !@skip.include?(entry.sheet)
         todays_duration += entry.duration
         todays_entries << entry
       end
@@ -28,10 +32,22 @@ class Timetrap::Formatters::Day
     return output
   end
 
-  def is_today(start_time, end_time)
-    return (Date.parse(start_time.strftime(DATE_FORMAT))..Date.parse(end_time.strftime(DATE_FORMAT))) === Date.today
+  def determine_target_date
+    # If entries exist, use the date of the last entry, otherwise use today
+    # This allows the formatter to work with filtered date ranges
+    if @entries.empty?
+      Date.today
+    else
+      # Use the latest date among the entries
+      @entries.map { |e| Date.parse(e[:start].strftime(DATE_FORMAT)) }.max || Date.today
+    end
   end
-  private :is_today
+  private :determine_target_date
+
+  def is_target_date(start_time, end_time, target_date)
+    return (Date.parse(start_time.strftime(DATE_FORMAT))..Date.parse(end_time.strftime(DATE_FORMAT))) === target_date
+  end
+  private :is_target_date
 
   def hours_to_seconds(hour_amount)
     return (hour_amount * 60.0 * 60.0)
